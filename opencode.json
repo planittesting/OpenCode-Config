@@ -1,0 +1,427 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "share": "disabled",
+  "autoupdate": false,
+  "enabled_providers": [
+    "amplify"
+  ],
+  "disabled_providers": [
+    "anthropic",
+    "openai",
+    "gemini",
+    "github-copilot"
+  ],
+  "default_agent": "build",
+  "provider": {
+    "amplify": {
+      "npm": "@ai-sdk/openai",
+      "name": "Amplify OpenAI Proxy",
+      "options": {
+        "baseURL": "{env:AMPLIFY_URL}",
+        "apiKey": "{env:AMPLIFY_TOKEN}"
+      },
+      "models": {
+        "gpt-5.2": {
+          "name": "Amplify-GPT-5.2-Low",
+          "options": {
+            "reasoningEffort": "low",
+            "textVerbosity": "low"
+          },
+          "limit": {
+            "context": 128000,
+            "input": 128000,
+            "output": 15000
+          }
+        },
+        "gpt-5.4": {
+          "name": "Amplify-GPT-5.4-Med",
+          "options": {
+            "reasoningEffort": "medium"
+          },
+          "limit": {
+            "context": 128000,
+            "input": 128000,
+            "output": 15000
+          }
+        },
+        "gpt-5.1-codex": {
+          "name": "Amplify-GPT-5.1 Codex-Medium",
+          "options": {
+            "reasoningEffort": "medium"
+          },
+          "limit": {
+            "context": 128000,
+            "input": 128000,
+            "output": 15000
+          }
+        }
+      }
+    }
+  },
+  "permission": {
+    "*": "deny",
+    "read": {
+      "*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "**/.env": "deny",
+      "**/.env.*": "deny",
+      "**/secrets/**": "deny",
+      "**/.ssh/**": "deny",
+      "**/.aws/**": "deny",
+      "**/.azure/**": "deny",
+      "**/.gnupg/**": "deny",
+      "**/*.pem": "deny",
+      "**/*.key": "deny",
+      "**/*id_rsa*": "deny",
+      "**/*id_ed25519*": "deny"
+    },
+    "grep": "allow",
+    "glob": "allow",
+    "list": "allow",
+    "lsp": "allow",
+    "edit": "allow",
+    "todowrite": "allow",
+    "webfetch": "ask",
+    "websearch": "ask",
+    "external_directory": {
+      "*": "deny"
+    },
+    "doom_loop": "ask",
+    "skill": {
+      "*": "allow"
+    },
+    "bash": {
+      "*": "deny",
+      "pwd": "allow",
+      "dir": "allow",
+      "dir *": "allow",
+      "ls": "allow",
+      "ls *": "allow",
+      "Test-Path *": "allow",
+      "New-Item *": "allow",
+      "Copy-Item *": "allow",
+      "Move-Item *": "allow",
+      "Rename-Item *": "allow",
+      "Compress-Archive *": "allow",
+      "Expand-Archive *": "allow",
+      "git status": "allow",
+      "git status *": "allow",
+      "git diff": "allow",
+      "git diff *": "allow",
+      "git log": "allow",
+      "git log *": "allow",
+      "git show": "allow",
+      "git show *": "allow",
+      "git blame *": "allow",
+      "git branch": "allow",
+      "git branch --show-current": "allow",
+      "git remote -v": "allow",
+      "git ls-files": "allow",
+      "git ls-files *": "allow",
+      "npm *": "ask",
+      "npm test": "ask",
+      "npm test *": "ask",
+      "npm run test": "ask",
+      "npm run test *": "ask",
+      "npm run lint": "ask",
+      "npm run lint *": "ask",
+      "npm run build": "ask",
+      "npm run build *": "ask",
+      "dotnet test": "ask",
+      "dotnet test *": "ask",
+      "dotnet build": "ask",
+      "dotnet build *": "ask",
+      "pytest": "ask",
+      "pytest *": "ask",
+      "python -m pytest": "ask",
+      "python -m pytest *": "ask",
+      "npx playwright test": "ask",
+      "npx playwright test *": "ask",
+      "npx cypress run": "ask",
+      "npx cypress run *": "ask",
+      "git add *": "deny",
+      "git commit *": "deny",
+      "git push *": "deny",
+      "git pull *": "deny",
+      "git fetch *": "deny",
+      "git checkout *": "deny",
+      "git switch *": "deny",
+      "git reset *": "deny",
+      "git clean *": "deny",
+      "git merge *": "deny",
+      "git rebase *": "deny",
+      "git cherry-pick *": "deny",
+      "git revert *": "deny",
+      "git tag *": "deny",
+      "npm install *": "deny",
+      "npm i *": "deny",
+      "pnpm install *": "deny",
+      "yarn install *": "deny",
+      "pip install *": "deny",
+      "python -m pip install *": "deny",
+      "rm *": "ask",
+      "rm -rf *": "deny",
+      "del *": "ask",
+      "erase *": "ask",
+      "rmdir *": "ask",
+      "rd *": "ask",
+      "Remove-Item *": "ask",
+      "curl *": "ask",
+      "wget *": "ask",
+      "Invoke-WebRequest *": "ask",
+      "iwr *": "deny",
+      "ssh *": "deny",
+      "scp *": "deny",
+      "powershell *": "ask",
+      "powershell.exe *": "ask",
+      "pwsh *": "ask",
+      "pwsh.exe *": "ask",
+      "cmd *": "ask",
+      "cmd.exe *": "ask",
+      "node *": "ask",
+      "python *": "ask"
+    }
+  },
+  "agent": {
+    "plan": {
+      "mode": "primary",
+      "description": "Restricted planning and analysis agent. Cannot modify files or run arbitrary commands.",
+      "permission": {
+        "*": "deny",
+        "read": {
+          "*": "allow",
+          "*.env": "deny",
+          "*.env.*": "deny",
+          "**/.env": "deny",
+          "**/.env.*": "deny",
+          "**/secrets/**": "deny",
+          "**/.ssh/**": "deny",
+          "**/.aws/**": "deny",
+          "**/.azure/**": "deny"
+        },
+        "grep": "allow",
+        "glob": "allow",
+        "list": "allow",
+        "lsp": "allow",
+        "todowrite": "allow",
+        "edit": "deny",
+        "webfetch": "ask",
+        "websearch": "ask",
+        "external_directory": {
+          "*": "deny"
+        },
+        "skill": {
+          "*": "ask"
+        },
+        "task": {
+          "*": "allow",
+          "explore": "allow",
+          "scout": "allow"
+        },
+        "bash": {
+          "*": "deny",
+          "git status": "allow",
+          "git status *": "allow",
+          "git diff": "allow",
+          "git diff *": "allow",
+          "git log": "allow",
+          "git log *": "allow",
+          "git show": "allow",
+          "git show *": "allow",
+          "git branch": "allow",
+          "git branch --show-current": "allow"
+        }
+      }
+    },
+    "build": {
+      "mode": "primary",
+      "description": "Read-write Agent. Can read and edit files in the current project and perform safe file operations, while dangerous commands remain blocked.",
+      "permission": {
+        "*": "deny",
+        "read": {
+          "*": "allow",
+          "*.env": "deny",
+          "*.env.*": "deny",
+          "**/.env": "deny",
+          "**/.env.*": "deny",
+          "**/secrets/**": "deny",
+          "**/.ssh/**": "deny",
+          "**/.aws/**": "deny",
+          "**/.azure/**": "deny"
+        },
+        "grep": "allow",
+        "glob": "allow",
+        "list": "allow",
+        "lsp": "allow",
+        "todowrite": "allow",
+        "edit": "allow",
+        "webfetch": "ask",
+        "websearch": "ask",
+        "external_directory": {
+          "*": "deny"
+        },
+        "skill": {
+          "*": "ask"
+        },
+        "task": {
+          "*": "allow",
+          "explore": "allow",
+          "scout": "allow"
+        },
+        "bash": {
+          "*": "ask",
+          "pwd": "allow",
+          "dir": "allow",
+          "dir *": "allow",
+          "ls": "allow",
+          "ls *": "allow",
+          "Test-Path *": "allow",
+          "New-Item *": "allow",
+          "Copy-Item *": "allow",
+          "Move-Item *": "allow",
+          "Rename-Item *": "allow",
+          "Compress-Archive *": "allow",
+          "Expand-Archive *": "allow",
+          "git status": "allow",
+          "git status *": "allow",
+          "git diff": "allow",
+          "git diff *": "allow",
+          "git log": "allow",
+          "git log *": "allow",
+          "git show": "allow",
+          "git show *": "allow",
+          "git blame *": "allow",
+          "git branch": "allow",
+          "git branch --show-current": "allow",
+          "git remote -v": "allow",
+          "git ls-files": "allow",
+          "git ls-files *": "allow",
+          "npm *": "ask",
+          "npm test": "ask",
+          "npm test *": "ask",
+          "npm run test": "ask",
+          "npm run test *": "ask",
+          "npm run lint": "ask",
+          "npm run lint *": "ask",
+          "npm run build": "ask",
+          "npm run build *": "ask",
+          "dotnet test": "ask",
+          "dotnet test *": "ask",
+          "dotnet build": "ask",
+          "dotnet build *": "ask",
+          "pytest": "ask",
+          "pytest *": "ask",
+          "python -m pytest": "ask",
+          "python -m pytest *": "ask",
+          "npx playwright test": "ask",
+          "npx playwright test *": "ask",
+          "npx cypress run": "ask",
+          "npx cypress run *": "ask",
+          "git add *": "deny",
+          "git commit *": "deny",
+          "git push *": "deny",
+          "git pull *": "deny",
+          "git fetch *": "deny",
+          "git checkout *": "deny",
+          "git switch *": "deny",
+          "git reset *": "deny",
+          "git clean *": "deny",
+          "git merge *": "deny",
+          "git rebase *": "deny",
+          "git cherry-pick *": "deny",
+          "git revert *": "deny",
+          "git tag *": "deny",
+          "npm install *": "ask",
+          "npm i *": "ask",
+          "pnpm install *": "ask",
+          "yarn install *": "ask",
+          "pip install *": "ask",
+          "python -m pip install *": "ask",
+          "rm *": "ask",
+          "rm -rf *": "ask",
+          "del *": "ask",
+          "erase *": "ask",
+          "rmdir *": "ask",
+          "rd *": "ask",
+          "Remove-Item *": "ask",
+          "curl *": "ask",
+          "wget *": "ask",
+          "Invoke-WebRequest *": "ask",
+          "iwr *": "deny",
+          "ssh *": "deny",
+          "scp *": "deny",
+          "powershell *": "ask",
+          "powershell.exe *": "ask",
+          "pwsh *": "ask",
+          "pwsh.exe *": "ask",
+          "cmd *": "ask",
+          "cmd.exe *": "ask",
+          "node *": "ask",
+          "python *": "ask"
+        }
+      }
+    },
+    "explore": {
+      "mode": "subagent",
+      "description": "Read-only codebase exploration agent.",
+      "permission": {
+        "*": "deny",
+        "read": "allow",
+        "grep": "allow",
+        "glob": "allow",
+        "list": "allow",
+        "lsp": "allow",
+        "edit": "deny",
+        "bash": {
+          "*": "deny",
+          "git status": "allow",
+          "git status *": "allow",
+          "git diff": "allow",
+          "git diff *": "allow",
+          "git log": "allow",
+          "git log *": "allow",
+          "git show": "allow",
+          "git show *": "allow"
+        },
+        "skill": {
+          "*": "ask"
+        },
+        "webfetch": "ask",
+        "websearch": "ask",
+        "external_directory": {
+          "*": "deny"
+        }
+      }
+    },
+    "scout": {
+      "mode": "subagent",
+      "description": "Restricted research subagent. No workspace modifications.",
+      "permission": {
+        "*": "deny",
+        "read": "allow",
+        "grep": "allow",
+        "glob": "allow",
+        "list": "allow",
+        "edit": "deny",
+        "bash": {
+          "*": "deny"
+        },
+        "skill": {
+          "*": "deny"
+        },
+        "webfetch": "ask",
+        "websearch": "ask",
+        "external_directory": {
+          "*": "deny"
+        }
+      }
+    },
+    "general": {
+      "disable": true,
+      "permission": {
+        "*": "deny"
+      }
+    }
+  }
+}
