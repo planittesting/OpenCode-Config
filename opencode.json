@@ -1,5 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "model": "amplify/gpt-5.2",
   "share": "disabled",
   "autoupdate": false,
   "enabled_providers": [
@@ -23,6 +24,15 @@
       "models": {
         "gpt-5.2": {
           "name": "Amplify-GPT-5.2-Quick",
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          },
           "options": {
             "reasoningEffort": "low"
           },
@@ -34,6 +44,15 @@
         },
         "gpt-5.4-opencode": {
           "name": "Amplify-GPT-5.4-Think",
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          },
           "options": {
             "reasoningEffort": "medium"
           },
