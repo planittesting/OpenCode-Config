@@ -66,7 +66,7 @@
     }
   },
   "permission": {
-    "*": "deny",
+    "*": "ask",
     "read": {
       "*": "allow",
       "*.env": "deny",
@@ -349,7 +349,7 @@
       "mode": "primary",
       "description": "Read-write Agent. Can read and edit files in the current project and perform safe file operations, while dangerous commands remain blocked.",
       "permission": {
-        "*": "deny",
+        "*": "ask",
         "read": {
           "*": "allow",
           "*.env": "deny",
