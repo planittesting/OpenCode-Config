@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "amplify/gpt-5.2",
+  "model": "amplify/gpt-6.1-sol",
   "share": "disabled",
   "autoupdate": false,
   "enabled_providers": [
@@ -22,44 +22,100 @@
         "apiKey": "{env:AMPLIFY_TOKEN}"
       },
       "models": {
-        "gpt-5.2": {
-          "name": "Amplify-GPT-5.2-Quick",
+        "gpt-6.1-sol": {
+          "name": "Amplify-GPT-6.1-Sol",
+          "reasoning" : true,
           "modalities": {
             "input": [
               "text",
               "image"
             ],
             "output": [
-              "text"
+              "text",
+              "image"
             ]
           },
           "options": {
             "reasoningEffort": "low"
           },
+          "variants": {
+            "low": {
+              "reasoningEffort": "low"
+            },
+            "medium": {
+              "reasoningEffort": "medium"
+            },
+            "high": {
+              "reasoningEffort": "high"
+            }
+          },
           "limit": {
-            "context": 128000,
-            "input": 128000,
-            "output": 15000
+            "context": 1050000,
+            "output": 128000
           }
         },
-        "gpt-5.4-opencode": {
-          "name": "Amplify-GPT-5.4-Think",
+        "gpt-5.2": {
+          "name": "Amplify-GPT-5.2",
+          "reasoning" : true,
           "modalities": {
             "input": [
               "text",
               "image"
             ],
             "output": [
-              "text"
+              "text",
+              "image"
             ]
           },
           "options": {
-            "reasoningEffort": "medium"
+            "reasoningEffort": "low"
+          },
+          "variants": {
+            "low": {
+              "reasoningEffort": "low"
+            },
+            "medium": {
+              "reasoningEffort": "medium"
+            },
+            "high": {
+              "reasoningEffort": "high"
+            }
           },
           "limit": {
-            "context": 128000,
-            "input": 128000,
-            "output": 15000
+            "context": 1050000,
+            "output": 128000
+          }
+        },
+        "gpt-5.4-opencode": {
+          "name": "Amplify-GPT-5.4",
+          "reasoning" : true,
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text",
+              "image"
+            ]
+          },
+          "options": {
+            "reasoningEffort": "low"
+          },
+          "variants": {
+            "low": {
+              "reasoningEffort": "low"
+            },
+            "medium": {
+              "reasoningEffort": "medium"
+            },
+            "high": {
+              "reasoningEffort": "high"
+            }
+          },
+          "limit": {
+            "context": 1050000,
+            "output": 128000
           }
         }
       }
